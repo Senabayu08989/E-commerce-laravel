@@ -19,6 +19,12 @@ Route::get('/login', function () {
     return view('login');
 });
 
+// Route::get('/', function () {
+//     return view('product/product');
+// });
+
+Route::Get('/','ProdctController@index');
+
 Route::post("/login",[UserController::class,'login']);
 // Route::get("/",[ProductController::class,'index']);
 
@@ -27,3 +33,4 @@ Route::resource('product',ProdctController::class);
 Route::get('search','ProdctController@search');
 // Route::get("search",[ProdctController::class,'search']);
 
+Route::Post('add_to_cart','ProdctController@addToCart');

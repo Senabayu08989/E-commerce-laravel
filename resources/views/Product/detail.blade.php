@@ -13,7 +13,11 @@
             <h4>Deskripsi       : {{$data->desc}}</h4>
             <h4>Category        : {{$data->category}}</h4>
             <br>
-            <button class="btn btn-primary">Add to Chart</button>
+            <form action="/add_to_cart" method="POST">
+                @csrf
+                <input type="hidden" name="product_id" value="{{$data->id}}">
+                <button class="btn btn-primary">Add to Chart</button>
+            </form>
             <button class="btn btn-success">Buy Now</button>
             <br><br>
         </div>

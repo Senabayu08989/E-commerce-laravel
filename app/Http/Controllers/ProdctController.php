@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Cart;
 class ProdctController extends Controller
 {
     /**
@@ -14,7 +15,7 @@ class ProdctController extends Controller
     public function index()
     {
         $data = Product::all();
-        return view('Product/product',['products'=>$data]);
+        return view('Product/index',['products'=>$data]);
     }
 
     /**
@@ -90,5 +91,21 @@ class ProdctController extends Controller
         $data = Product::where('name','like','%'.$request->input('query').'%')->get();
         // return view('product/search',['products'=>$data]);
         return view('product/search',compact('data'));
+    }
+
+    public function addToCart(Request $request)
+    {
+       if($request->session()->has('user'))
+       {
+         $cart = new Cart;
+         $cart->user_id=$request->session()->get('user')['id'];
+         $cart->product_id=$request->product_id;
+         $cart->save();
+
+         return redirect('/');
+       }
+       else{
+           return redirect('/login');
+       }
     }
 }
