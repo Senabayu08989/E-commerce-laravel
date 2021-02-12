@@ -39,3 +39,10 @@ Route::get('search','ProdctController@search');
 // Route::get("search",[ProdctController::class,'search']);
 
 Route::Post('add_to_cart','ProdctController@addToCart');
+
+Route::Get('/cartlist','ProdctController@cartList');    
+
+Route::Get('/removecart/{id}','ProdctController@removeCart');
+Route::Get('/ordernow','ProdctController@orderNow');
+
+Route::Post('/orderplace','ProdctController@orderPlace');

@@ -34,7 +34,7 @@
           <button type="submit" class="btn btn-default">Search</button>
         </form>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Chart({{$total}})</a></li>
+          <li><a href="/cartlist">Chart({{$total}})</a></li>
           @if (Session::has('user'))
             
             <li class="dropdown">
