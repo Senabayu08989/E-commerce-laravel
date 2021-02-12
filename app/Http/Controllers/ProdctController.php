@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Product;
 class ProdctController extends Controller
 {
     /**
@@ -13,7 +13,8 @@ class ProdctController extends Controller
      */
     public function index()
     {
-        return 'Welcome to Product Page';
+        $data = Product::all();
+        return view('Product/product',['products'=>$data]);
     }
 
     /**
