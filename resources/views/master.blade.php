@@ -32,6 +32,20 @@
         background-color: rgba(91, 119, 84, 0.55) !important;
         color: rgb(245, 245, 245);
     }
+    .trending-img{
+        height: 100px;
+    }
+    .trending-item{
+        float: left;
+        width: 20%;
+    }
+    .trending-wrapper{
+        margin: 20px;
+        
+    }
+    .detail-img{
+        height: 200px;
+    }
 </style>
 
 </html>
