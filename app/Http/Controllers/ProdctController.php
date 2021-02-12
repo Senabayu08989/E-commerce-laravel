@@ -83,4 +83,12 @@ class ProdctController extends Controller
     {
         //
     }
+
+    public function search(Request $request)
+    {
+
+        $data = Product::where('name','like','%'.$request->input('query').'%')->get();
+        // return view('product/search',['products'=>$data]);
+        return view('product/search',compact('data'));
+    }
 }
