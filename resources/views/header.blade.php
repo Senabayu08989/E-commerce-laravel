@@ -1,6 +1,10 @@
 @php
     use App\Http\Controllers\ProdctController;
     $total=ProdctController::cartItem();
+    $total=0;
+    if (Session::has('user')) {
+        $total=ProdctController::cartItem();
+    }
 @endphp
 <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -12,7 +16,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Brand</a>
+        <a class="navbar-brand" href="/">E-Commerce</a>
       </div>
   
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -31,6 +35,18 @@
         </form>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">Chart({{$total}})</a></li>
+          @if (Session::has('user'))
+            
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Session::get('user')['name']}} <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/logout">Logout</a></li>
+              </ul>
+            </li>                
+          @else
+          <li><a href="/login">Login</a></li>
+          @endif
+         
           
         </ul>
       </div><!-- /.navbar-collapse -->
